@@ -14,17 +14,75 @@ export const getProfileFetch = () => {
       })
         .then(resp => resp.json())
         .then(data => {
-          if (data.message) {
+          if (data.errors) {
             localStorage.removeItem("token")
-            console.log("invalid token", data);
+            console.log("Invalid token", data);
             dispatch(push('/login'))
           } else {
             console.log("fetched the profile", data)
-            // dispatch(loginUser(data.user))
+            dispatch(loginUser(data.user))
           }
         });
     } else {
       console.log("No one is signed in.");
     }
   }
+}
+
+const loginUser = userObj => ({
+  type: "LOGIN_USER",
+  payload: userObj
+})
+
+const logoutUser = () => ({
+  type: "LOGOUT_USER"
+})
+
+export const loginFetch = loginObj => {
+  return dispatch => {
+    fetch("http://localhost:3000/login", {
+      method: "POST",
+      body: JSON.stringify(loginObj),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.errors) {
+        alert(data.errors)
+      } else {
+        localStorage.setItem("token", data.jwt);
+        dispatch(loginUser(data.user))
+      }
+    })
+  }
+}
+
+export const signupFetch = signupObj => {
+  return dispatch => {
+    console.log("Now beginning signup fetch...");
+    fetch("http://localhost:3000/users", {
+      method: "POST",
+      body: JSON.stringify(signupObj),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.errors) {
+        alert(data.errors)
+      } else {
+        localStorage.setItem("token", data.jwt);
+        dispatch(loginUser(data.user))
+      }
+    })
+  }
+}
+
+export const logoutUserDispatch = () => {
+  return dispatch => dispatch(logoutUser())
 }

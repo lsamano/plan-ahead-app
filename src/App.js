@@ -1,18 +1,25 @@
 import React, { Component } from 'react';
 import './App.css';
-import { getProfileFetch } from './redux/actions';
 import { connect } from 'react-redux';
+import { Switch, Route } from 'react-router-dom'
+import { getProfileFetch } from './redux/actions';
+import Login from './components/Login'
+import Signup from './components/Signup'
+import Home from './components/Home'
 
 class App extends Component {
   componentDidMount = () => {
-    this.props.getProfileFetch();
+    // fetches profile on page load
+    this.props.getProfileFetch()
   }
 
   render() {
     return (
-      <div className="App">
-        
-      </div>
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+        <Route path="/" component={Home} />
+      </Switch>
     );
   }
 }
