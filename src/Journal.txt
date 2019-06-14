@@ -1,1 +1,7 @@
-Hi Leizl, lets use this to plan and coordinate objectives. 
+Hi Leizl, lets use this to plan and coordinate objectives.
+
+Frontend
+- Added redux store scaffolding
+- Added Routes scaffolding
+Objective:
+- Auth setup

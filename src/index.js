@@ -4,16 +4,16 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+// Redux
 import { createStore, applyMiddleware } from 'redux';
-
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import createRootReducer from './redux/rootReducer'
+import { composeWithDevTools } from 'redux-devtools-extension';
 
+// Routes
 import { ConnectedRouter, routerMiddleware } from 'connected-react-router';
 import { createBrowserHistory } from 'history'
-import createRootReducer from './redux/rootReducer'
-
-import { composeWithDevTools } from 'redux-devtools-extension';
 
 export const history = createBrowserHistory()
 
