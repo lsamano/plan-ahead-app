@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { loginFetch } from '../redux/actions';
 
 class Login extends Component {
   state = {
@@ -8,7 +10,7 @@ class Login extends Component {
 
   submitHandler = event => {
     event.preventDefault()
-    // TODO: run create user fetch
+    this.props.loginFetch(this.state)
   }
 
   changeHandler = event => {
@@ -27,7 +29,10 @@ class Login extends Component {
       </form>
     );
   }
-
 }
 
-export default Login;
+const mapDispatchToProps = dispatch => ({
+  loginFetch: loginObj => dispatch(loginFetch(loginObj))
+})
+
+export default connect(null, mapDispatchToProps)(Login);

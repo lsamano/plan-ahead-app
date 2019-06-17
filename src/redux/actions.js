@@ -1,31 +1,26 @@
 import { push } from 'connected-react-router'
 
-export const getProfileFetch = () => {
-  return (dispatch) => {
-    let token = localStorage.token;
-    if (token) {
-      return fetch("http://localhost:3000/profile", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-          "Authorization": `Bearer ${token}`
-        }
-      })
-        .then(resp => resp.json())
-        .then(data => {
-          if (data.errors) {
-            localStorage.removeItem("token")
-            console.log("Invalid token", data);
-            dispatch(push('/login'))
-          } else {
-            console.log("fetched the profile", data)
-            dispatch(loginUser(data.user))
-          }
-        });
-    } else {
-      console.log("No one is signed in.");
-    }
+export const getProfileFetch = token => {
+  return dispatch => {
+    return fetch("http://localhost:3000/profile", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Authorization": `Bearer ${token}`
+      }
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      if (data.errors) {
+        localStorage.removeItem("token")
+        console.log("Invalid token", data);
+        dispatch(push('/login'))
+      } else {
+        console.log("fetched the profile", data)
+        dispatch(loginUser(data.user))
+      }
+    });
   }
 }
 
@@ -39,6 +34,7 @@ const logoutUser = () => ({
 })
 
 export const loginFetch = loginObj => {
+  console.log("Now beginning signup fetch...");
   return dispatch => {
     fetch("http://localhost:3000/login", {
       method: "POST",

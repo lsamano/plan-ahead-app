@@ -6,20 +6,24 @@ import { getProfileFetch } from './redux/actions';
 import Login from './components/Login'
 import Signup from './components/Signup'
 import Home from './components/Home'
+import Navbar from './components/Navbar'
 
 class App extends Component {
   componentDidMount = () => {
-    // fetches profile on page load
-    this.props.getProfileFetch()
+    // fetches profile on page load if token exists
+    localStorage.token && this.props.getProfileFetch(localStorage.token)
   }
 
   render() {
     return (
+      <>
+      <Navbar />
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/" component={Home} />
       </Switch>
+      < />
     );
   }
 }

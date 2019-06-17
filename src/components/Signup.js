@@ -14,7 +14,6 @@ class Signup extends Component {
   submitHandler = event => {
     event.preventDefault()
     this.props.signupFetch(this.state)
-    // TODO: run create user fetch
   }
 
   changeHandler = event => {
