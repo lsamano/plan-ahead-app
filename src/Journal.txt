@@ -1,7 +1,18 @@
-Hi Leizl, lets use this to plan and coordinate objectives.
+Hi Leizl, let's use this to plan and coordinate objectives.
+'Kay.
 
+## June 17
+Frontend
+- Added WaterCSS for styling 
+- Components created:
+  - Navbar
+  - GoalContainer
+  - GoalItem
+
+## ~ June 14
 Frontend
 - Added redux store scaffolding
 - Added Routes scaffolding
-Objective:
-- Auth setup
+- Frontend auth setup to send login/auto-login/signup fetches
+- Components created:
+  - Home, Login, Signup

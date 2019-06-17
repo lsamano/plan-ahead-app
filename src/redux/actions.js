@@ -12,7 +12,7 @@ export const getProfileFetch = token => {
     })
     .then(resp => resp.json())
     .then(data => {
-      if (data.errors) {
+      if (data.error) {
         localStorage.removeItem("token")
         console.log("Invalid token", data);
         dispatch(push('/login'))
@@ -46,8 +46,8 @@ export const loginFetch = loginObj => {
     })
     .then(res => res.json())
     .then(data => {
-      if (data.errors) {
-        alert(data.errors)
+      if (data.error) {
+        alert(data.error)
       } else {
         localStorage.setItem("token", data.jwt);
         dispatch(loginUser(data.user))
@@ -69,8 +69,8 @@ export const signupFetch = signupObj => {
     })
     .then(res => res.json())
     .then(data => {
-      if (data.errors) {
-        alert(data.errors)
+      if (data.error) {
+        alert(data.error)
       } else {
         localStorage.setItem("token", data.jwt);
         dispatch(loginUser(data.user))

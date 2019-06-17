@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import GoalContainer from '../containers/GoalContainer';
 
 class Home extends Component {
 
   render() {
     return (
-      <div>This is the Home Page!</div>
+      <>
+      <h1>Welcome, _____.</h1>
+      <GoalContainer />
+      < />
     );
   }
 
