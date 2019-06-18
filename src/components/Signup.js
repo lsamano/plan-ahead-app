@@ -38,7 +38,7 @@ class Signup extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  signupFetch: () => dispatch(signupFetch())
+  signupFetch: userObj => dispatch(signupFetch(userObj))
 })
 
 export default connect(null, mapDispatchToProps)(Signup);

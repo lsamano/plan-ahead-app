@@ -2,7 +2,7 @@ import { push } from 'connected-react-router'
 
 export const getProfileFetch = token => {
   return dispatch => {
-    return fetch("http://localhost:3000/profile", {
+    return fetch("http://localhost:3000/api/v1/profile", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -34,11 +34,11 @@ const logoutUser = () => ({
 })
 
 export const loginFetch = loginObj => {
-  console.log("Now beginning signup fetch...");
+  console.log("Now beginning login fetch...");
   return dispatch => {
-    fetch("http://localhost:3000/login", {
+    fetch("http://localhost:3000/api/v1/login", {
       method: "POST",
-      body: JSON.stringify(loginObj),
+      body: JSON.stringify({user: loginObj}),
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
@@ -59,9 +59,9 @@ export const loginFetch = loginObj => {
 export const signupFetch = signupObj => {
   return dispatch => {
     console.log("Now beginning signup fetch...");
-    fetch("http://localhost:3000/users", {
+    fetch("http://localhost:3000/api/v1/users", {
       method: "POST",
-      body: JSON.stringify(signupObj),
+      body: JSON.stringify({user: signupObj}),
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
