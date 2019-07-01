@@ -12,7 +12,7 @@ export const getProfileFetch = token => {
     })
     .then(resp => resp.json())
     .then(data => {
-      if (data.error) {
+      if (data.error || data.message) {
         localStorage.removeItem("token")
         console.log("Invalid token", data);
         dispatch(push('/login'))
@@ -29,7 +29,7 @@ const loginUser = userObj => ({
   payload: userObj
 })
 
-const logoutUser = () => ({
+export const logoutUser = () => ({
   type: "LOGOUT_USER"
 })
 

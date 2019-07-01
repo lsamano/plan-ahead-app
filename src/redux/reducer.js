@@ -1,14 +1,14 @@
 const initialState = {
-  user: {},
+  currentUser: {},
   goals: []
 }
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case 'LOGIN_USER':
-          return { ...state, user: action.payload};
+          return { ...state, currentUser: action.payload};
         case 'LOGOUT_USER':
-          return { ...state, user: {}};
+          return { ...state, currentUser: {}};
         default:
             return state;
     }

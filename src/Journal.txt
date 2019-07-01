@@ -1,9 +1,13 @@
 Hi Leizl, let's use this to plan and coordinate objectives.
 'Kay.
 
+## June 18
+Frontend
+Auth established
+
 ## June 17
 Frontend
-- Added WaterCSS for styling 
+- Added WaterCSS for styling
 - Components created:
   - Navbar
   - GoalContainer

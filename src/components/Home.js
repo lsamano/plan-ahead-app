@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
-import GoalContainer from '../containers/GoalContainer';
+import HabitContainer from '../containers/HabitContainer';
+import { connect } from 'react-redux'
 
 class Home extends Component {
 
   render() {
     return (
       <>
-      <h1>Welcome, _____.</h1>
-      <GoalContainer />
+      <h1>Welcome, {this.props.currentUser.username}.</h1>
+      <HabitContainer />
       < />
     );
   }
 
 }
 
-export default Home;
+const mapStateToProps = state => ({
+  currentUser: state.reducer.currentUser
+})
+
+export default connect(mapStateToProps)(Home);
